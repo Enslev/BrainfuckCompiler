@@ -5,17 +5,22 @@ import java.util.Scanner;
 public class Main {
 
 	public static void main(String[] args) {
-		Brainfuck bf = new Brainfuck(7);
+		int n;
+		if (args.length == 0) {
+			System.out.println("Length of Brainfuck array not specified. Defaulting to 8.");
+			n = 8;
+		} else {
+			n = Integer.parseInt(args[0]);
+		}
 		
-		String str;
+		Brainfuck bf = new Brainfuck(n);
 		Scanner sc = new Scanner(System.in);
 		
         System.out.println("Enter Brainfuck (Leave blank for \"Hello World!\"):");
-		str = sc.nextLine();
+        String str = sc.nextLine();
 		if (str.equals("")) {
 			str = "++++++++[>++++[>++>+++>+++>+<<<<-]>+>+>->>+[<]<-]>>.>---.+++++++..+++.>>.<-.<.+++.------.--------.>>+.>++.";
 		}
-		
 		sc.close();
 				
 		try {
@@ -24,11 +29,6 @@ public class Main {
 			e.printStackTrace();
 		}
 		
-		System.out.println(bf.toString());
-		
-		
+		System.out.println(bf.toString());		
 	}
-	
-	
-	
 }
