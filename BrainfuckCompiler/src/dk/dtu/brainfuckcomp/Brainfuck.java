@@ -129,7 +129,7 @@ public class Brainfuck {
 	}
 	
 	public String toString() {
-		String str = "[";
+		String str = "\n[";
 		
 		for (int n: arr) {
 			str += " " + n + " ";
