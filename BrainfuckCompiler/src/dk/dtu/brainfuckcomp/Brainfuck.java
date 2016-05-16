@@ -15,6 +15,20 @@ public class Brainfuck {
 	}
 	
 	public void parse(String str) throws UnknownSymbolExeption {
+		parseHelper(str, false);
+	}
+	
+	private void parseHelper(String str, boolean loop) throws UnknownSymbolExeption {
+		if (loop) {
+			while (arr[pointer] != 0) {
+				parseString(str);
+			}			
+		} else {
+			parseString(str);
+		}
+	}
+	
+	private void parseString(String str) throws UnknownSymbolExeption {
 		int loopMode = 0;
 		String loopString = "";
 		for (char a: str.toCharArray()) {
@@ -32,7 +46,7 @@ public class Brainfuck {
 			}
 			
 			if (loopString.length() > 0 && loopMode == 0) {
-				parseLoop(loopString);
+				parseHelper(loopString, true);
 				loopString = "";
 				continue;
 			}
@@ -40,37 +54,6 @@ public class Brainfuck {
 			if (loopMode == 0) {
 				parseChar(a);
 			}
-		}
-	}
-	
-	private void parseLoop(String str) throws UnknownSymbolExeption {
-		int loopMode = 0;
-		String loopString = "";
-		while (arr[pointer] != 0) {
-			for (char a: str.toCharArray()) {
-				if (loopMode>0 && (loopMode != 1 || a != ']')) {
-					loopString += a;
-				}
-				
-				if (a == '[') {
-					loopMode++;
-					continue;
-				}
-				
-				if (a == ']') {
-					loopMode--;
-				}
-				
-				if (loopString.length() > 0 && loopMode == 0) {
-					parseLoop(loopString);
-					loopString = "";
-					continue;
-				}
-				
-				if (loopMode == 0) {
-					parseChar(a);
-				}
-			}	
 		}
 	}
 	
