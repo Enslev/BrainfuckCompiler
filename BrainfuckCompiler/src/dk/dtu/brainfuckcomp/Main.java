@@ -4,6 +4,8 @@ import java.util.Scanner;
 
 public class Main {
 
+	private static final String HELLO = "++++++++[>++++[>++>+++>+++>+<<<<-]>+>+>->>+[<]<-]>>.>---.+++++++..+++.>>.<-.<.+++.------.--------.>>+.>++.";
+
 	public static void main(String[] args) {
 		int n;
 		if (args.length == 0) {
@@ -19,7 +21,7 @@ public class Main {
         System.out.println("Enter Brainfuck (Leave blank for \"Hello World!\"):");
         String str = sc.nextLine();
 		if (str.equals("")) {
-			str = "++++++++[>++++[>++>+++>+++>+<<<<-]>+>+>->>+[<]<-]>>.>---.+++++++..+++.>>.<-.<.+++.------.--------.>>+.>++.";
+			str = HELLO;
 		}
 		sc.close();
 				
