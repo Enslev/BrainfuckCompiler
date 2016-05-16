@@ -103,7 +103,14 @@ public class Brainfuck {
 
 	private void inputChar() {
         System.out.println("Enter a Character:");
-        arr[pointer] = sc.next().toCharArray()[0];
+        String inp = sc.nextLine();
+        char[] charArr = inp.toCharArray();
+        if (charArr.length == 0) {
+        	arr[pointer] = 10; // newline
+        	return;
+        }
+
+        arr[pointer] = charArr[0];
 	}
 	
 	public String toString() {
