@@ -1,12 +1,13 @@
 package dk.dtu.brainfuckcomp;
 
-import java.io.IOException;
+import java.util.Scanner;
 
 public class Brainfuck {
 	
 	private int[] arr;
 	private int lenght;
 	private int pointer;
+	private Scanner sc = new Scanner(System.in);
 	
 	public Brainfuck(int n) {
 		pointer = 0;
@@ -74,7 +75,6 @@ public class Brainfuck {
 		default: 	throw new UnknownSymbolExeption();
 		}
 	}
-
 	private void incValue() {
 		arr[pointer] += 1;
 	}
@@ -103,12 +103,7 @@ public class Brainfuck {
 
 	private void inputChar() {
         System.out.println("Enter a Character:");
-        try {
-            arr[pointer] = System.in.read();
-        }
-        catch (IOException e){
-            System.out.println("Error reading from user");
-        }
+        arr[pointer] = sc.next().toCharArray()[0];
 	}
 	
 	public String toString() {
