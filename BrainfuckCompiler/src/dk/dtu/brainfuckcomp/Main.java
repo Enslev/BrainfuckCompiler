@@ -23,7 +23,6 @@ public class Main {
 		if (str.equals("")) {
 			str = HELLO;
 		}
-		sc.close();
 				
 		try {
 			bf.parse(str);
@@ -31,6 +30,7 @@ public class Main {
 			e.printStackTrace();
 		}
 		
-		System.out.println(bf.toString());		
+		System.out.println(bf.toString());
+		sc.close();
 	}
 }
